@@ -1,5 +1,5 @@
 /* Clase que gestiona la visualización interactiva del mapa con los cargadores.
-   Utiliza Leaflet para renderizar el mapa y los marcadores personalizados. */
+   Utiliza Leaflet para renderizar el mapa y los marcadores personalizados */
 import { CargadorRecord } from './types';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
@@ -52,7 +52,7 @@ export class MapaInteractivo {
         });
     }
 
-    // Inicializa el mapa centrado en Valencia con la configuración base.
+    // Inicializa el mapa centrado en Valencia con la configuración base
     inicializarMapa(contenedorId: string): void {
         // Evitar inicializar múltiples veces
         if (this.mapa) {
@@ -85,7 +85,7 @@ export class MapaInteractivo {
     }
 
     /* Añade marcadores al mapa para cada cargador del array proporcionado.
-       Limpia los marcadores existentes antes de añadir los nuevos. */
+       Limpia los marcadores existentes antes de añadir los nuevos */
     agregarCargadores(cargadores: CargadorRecord[]): void {
         this.limpiarMarcadores();
 
@@ -141,34 +141,34 @@ export class MapaInteractivo {
     }
 
     /* Simula la disponibilidad de un cargador basándose en su ID
-       Genera un valor aleatorio consistente para cada cargador.
+       Genera un valor aleatorio consistente para cada cargador
        En un entorno de producción, esto se obtendría de una API de disponibilidad en tiempo real. */
 
     private simularDisponibilidad(cargador: CargadorRecord): boolean {
         // Simulamos si un cargador está disponible o ocupado, 
-        // siempre de forma predecible, basándonos en su ID.
+        // siempre de forma predecible, basándonos en su ID
 
         const codigo = cargador.id;
         let suma = 0;
 
-        // Convertimos cada letra del ID en su código y sumamos.
+        // Convertimos cada letra del ID en su código y sumamos
         for (const letra of codigo) {
             suma += letra.charCodeAt(0);
         }
         const numeroSimulado = (suma % 100) / 100;
 
-        // Queremos que haya un 60% de probabilidad de estar disponible.
+        // Queremos que haya un 60% de probabilidad de estar disponible
         const estaDisponible = numeroSimulado < 0.6;
 
         return estaDisponible;
     }
 
 
-    // Centra el mapa en un marcador específico y abre su popup.
+    // Centra el mapa en un marcador específico y abre su popup
     centrarEnMarcador(lat: number, lon: number): void {
         if (!this.mapa) return;
 
-        // Centramos el mapa en la ubicación indicada con un nivel de zoom agradable.
+        // Centramos el mapa en la ubicación indicada con un nivel de zoom agradable
         this.mapa.setView([lat, lon], 17);
 
         // Buscamos el marcador más cercano a esa posición
@@ -186,21 +186,21 @@ export class MapaInteractivo {
     }
 
 
-    // Elimina todos los marcadores del mapa.
+    // Elimina todos los marcadores del mapa
     private limpiarMarcadores(): void {
         this.grupoMarcadores.clearLayers();
         this.marcadores = [];
     }
 
-    /* Fuerza la actualización del tamaño del mapa.
-       Útil cuando el contenedor cambia de dimensiones. */
+    /* Fuerza la actualización del tamaño del mapa
+       Útil cuando el contenedor cambia de dimensiones */
     redimensionar(): void {
         if (this.mapa) {
             this.mapa.invalidateSize();
         }
     }
 
-    // Destruye la instancia del mapa y limpia todos los recursos.
+    // Destruye la instancia del mapa y limpia todos los recursos
     destruir(): void {
         if (this.mapa) {
             this.mapa.remove();

@@ -60,7 +60,7 @@ export interface Filtros {
     busqueda?: string;
 }
 
-/* Estructura de las estadísticas generales d la aplicación*/
+/* Estructura de las estadísticas generales d la aplicación s*/
 export interface Estadisticas {
     totalCargadores: number;
     totalTomas: number;
