@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cargadores de Vehículos Eléctricos - Valencia</title>
+  <meta name="description" content="Consulta los cargadores de vehículos eléctricos disponibles en Valencia">
+</head>
+
+<body>
+  <div id="app">
+    <!-- Header -->
+    <header class="header">
+      <div class="container">
+        <h1>Cargadores de Vehículos Eléctricos</h1>
+        <p class="subtitle">Valencia</p>
+      </div>
+    </header>
+
+    <!-- Sección de filtros -->
+    <section class="filtros-seccion">
+      <div class="container">
+        <div class="filtros-container">
+          <div class="filtro-item">
+            <label for="busqueda">Buscar por ubicación:</label>
+            <input type="text" id="busqueda" placeholder="Ej: Blasco Ibañez, Conde Altea..." class="input-text" />
+          </div>
+
+          <div class="filtro-item">
+            <label for="filtro-distrito">Distrito:</label>
+            <select id="filtro-distrito" class="select-box">
+              <option value="">Todos los distritos</option>
+              <option value="1">Ciutat Vella</option>
+              <option value="2">L'Eixample (Ensanche)</option>
+              <option value="3">Extramurs</option>
+              <option value="4">Campanar</option>
+              <option value="5">La Saïdia (Zaidía)</option>
+              <option value="6">El Pla del Real</option>
+              <option value="7">L'Olivereta</option>
+              <option value="8">Patraix</option>
+              <option value="9">Jesús</option>
+              <option value="10">Quatre Carreres</option>
+              <option value="11">Poblats Marítims</option>
+              <option value="12">Camins al Grau</option>
+              <option value="13">Algirós</option>
+              <option value="14">Benimaclet</option>
+              <option value="15">Rascanya</option>
+            </select>
+          </div>
+
+          <div class="filtro-item">
+            <label for="filtro-conector">Tipo de conector:</label>
+            <select id="filtro-conector" class="select-box">
+              <option value="">Todos los tipos</option>
+              <option value="TIPO 2">TIPO 2</option>
+              <option value="SCHUKO">SCHUKO</option>
+            </select>
+          </div>
+
+          <div class="filtro-item">
+            <label for="ordenar">Ordenar por:</label>
+            <select id="ordenar" class="select-box">
+              <option value="">Por defecto</option>
+              <option value="distrito">Distrito</option>
+              <option value="precio">Precio</option>
+              <option value="tomas">Número de tomas</option>
+            </select>
+          </div>
+
+          <div class="filtro-item">
+            <button id="limpiar-filtros" class="btn-limpiar">
+              Limpiar filtros
+            </button>
+          </div>
+        </div>
+
+        <div class="resultados-info">
+          <span id="contador-resultados" class="contador">0 cargadores</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Vista de Mapa/Lista -->
+    <section class="vista-controles">
+      <div class="container">
+        <div class="controles-vista">
+          <button id="btn-vista-lista" class="btn-vista activo">
+            Vista Lista
+          </button>
+          <button id="btn-vista-mapa" class="btn-vista">
+            Vista Mapa
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contenedor del Mapa -->
+    <section id="mapa-seccion" class="mapa-seccion" style="display: none;">
+      <div class="container-full">
+        <div id="mapa" class="mapa-contenedor"></div>
+      </div>
+    </section>
+
+    <div id="loader" class="loader" style="display: none;">
+      <div class="spinner"></div>
+      <p>Cargando datos...</p>
+    </div>
+
+    <!-- Lista de cargadores -->
+    <main class="main-content">
+      <div class="container">
+        <div id="cargadores-lista" class="cargadores-grid">
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <p>Datos proporcionados por <a href="https://valencia.opendatasoft.com/api/v2/catalog/datasets/carregadors-vehicles-electrics-cargadores-vehiculos-electricos/records/" target="_blank">Valencia Open Data</a>
+        </p>
+        <p class="author">Desarrollado por Nicolás Cortez Gómez</p>
+      </div>
+    </footer>
+  </div>
+
+  <script type="module" src="/src/main.ts"></script>
+</body>
+
+</html>
